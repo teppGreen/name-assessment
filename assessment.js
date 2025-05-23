@@ -16,17 +16,25 @@ assessmentButton.addEventListener(
     }
 
     console.log(`userName: ${userName}`);
-    const answer = assesment(userName);
-
-    resultDiv.innerText = '';
-    let header = document.createElement('h2');
-    header.innerText = '診断結果';
-    resultDiv.appendChild(header);
-    
-    let paragraph = document.createElement('p');
     const result = assesment(userName);
+
+    // 結果表示エリア
+    resultDiv.innerText = '';
+
+    const headerDiv = document.createElement('div');
+    headerDiv.setAttribute('class', 'card-header text-bg-primary');
+    headerDiv.innerText = '診断結果';
+
+    const bodyDiv = document.createElement('div');
+    bodyDiv.setAttribute('class', 'card-body');
+    const paragraph = document.createElement('p');
+    paragraph.setAttribute('class', 'card-text');
     paragraph.innerText = result;
-    resultDiv.appendChild(paragraph);
+    bodyDiv.appendChild(paragraph);
+
+    resultDiv.setAttribute('class', 'card');
+    resultDiv.appendChild(headerDiv);
+    resultDiv.appendChild(bodyDiv);
 
     // Xポストボタン
     shareDiv.innerText = '';
